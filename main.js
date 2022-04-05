@@ -34,7 +34,7 @@ const pAequorFactory = (specimenNum, dna) => {
       return this.dna[randomIndex] = returnRandBase(this.dna[randomIndex]);
     },
     // compares percentage of the same bases in identical positions between two samples
-    compareDNA(sample) {
+    compareDNA(sample, showMessage) {
       let sumIdentical = 0;
       for (let i = 0; i < sample.dna.length; i++) {
         if (sample.dna[i] === this.dna[i]) {
@@ -42,7 +42,9 @@ const pAequorFactory = (specimenNum, dna) => {
         }
       }
       const percentIdentical = (sumIdentical / sample.dna.length) * 100;
-      //console.log(`specimen #${this.specimenNum} and specimen #${sample.specimenNum} have ${percentIdentical.toFixed(2)}% DNA in common`);
+      if (showMessage) {
+        console.log(`specimen #${this.specimenNum} and specimen #${sample.specimenNum} have ${percentIdentical.toFixed(2)}% DNA in common`);
+      }
       return percentIdentical;
 
     },
