@@ -66,3 +66,26 @@ while (survavibleInstancesArray.length < 30) {
   sampleNum++;
 }
 console.log(survavibleInstancesArray);
+
+const findMostRelatedOrganisms = specimen => {
+  console.log(specimen.length);
+  const highestMatch = {
+    orgA: 0,
+    orgB: 0,
+    matchPercent: 0,
+  };
+  for (let i = 0; i < specimen.length-2; i++) {
+    for (let j = i+1; j < specimen.length-1; j++) {
+      if (specimen[i].compareDNA(specimen[j]) > highestMatch.matchPercent) {
+        highestMatch.orgA = specimen[i].specimenNum;
+        highestMatch.orgB = specimen[j].specimenNum;
+        highestMatch.matchPercent = specimen[i].compareDNA(specimen[j]);
+
+      }
+      //console.log(`${specimen[i].specimenNum} and ${specimen[j].specimenNum}: `, specimen[i].compareDNA(specimen[j]));
+    }
+  }
+  return highestMatch;
+};
+
+console.log(findMostRelatedOrganisms(survavibleInstancesArray));
