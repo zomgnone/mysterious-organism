@@ -17,6 +17,26 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
+// Complementary DNA strand helper function
+const complementDNAHelper = element => {
+  switch(element) {
+    case 'A':
+      return 'T';
+      break;
+    case 'T':
+      return 'A';
+      break;
+    case 'C':
+      return 'G';
+      break;
+    case 'G':
+      return 'C';
+      break;
+    default:
+      console.log('Error construncting complementary DNA strand: provided base should be A,T,C or G.');
+  }
+};
+
 // Constructs P. Aequor organism object
 const pAequorFactory = (specimenNum, dna) => {
   return {
@@ -53,6 +73,10 @@ const pAequorFactory = (specimenNum, dna) => {
       let survivableBasesCounter = 0;
       this.dna.forEach(base => {if (base === 'C' || base === 'G') {survivableBasesCounter++}});
       return (survivableBasesCounter / this.dna.length) >= 0.6;
+    },
+    // returns complementary DNA strand
+    complementStrand() {
+      return this.dna.map(el => complementDNAHelper(el));
     }
   }
 };
@@ -70,7 +94,6 @@ while (survavibleInstancesArray.length < 30) {
 console.log(survavibleInstancesArray);
 
 const findMostRelatedOrganisms = specimen => {
-  console.log(specimen.length);
   const highestMatch = {
     orgA: 0,
     orgB: 0,
@@ -82,11 +105,13 @@ const findMostRelatedOrganisms = specimen => {
         highestMatch.orgA = specimen[i].specimenNum;
         highestMatch.orgB = specimen[j].specimenNum;
         highestMatch.matchPercent = specimen[i].compareDNA(specimen[j]);
-
       }
     }
   }
   return highestMatch;
 };
+
+console.log(survavibleInstancesArray[0].dna);
+console.log(survavibleInstancesArray[0].complementStrand());
 
 console.log(findMostRelatedOrganisms(survavibleInstancesArray));
