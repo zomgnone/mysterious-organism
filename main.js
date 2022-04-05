@@ -76,7 +76,7 @@ const pAequorFactory = (specimenNum, dna) => {
     },
     // returns complementary DNA strand
     complementStrand() {
-      return this.dna.map(el => complementDNAHelper(el));
+      return this.dna.map(complementDNAHelper);
     }
   }
 };
