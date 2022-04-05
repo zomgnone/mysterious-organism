@@ -42,7 +42,8 @@ const pAequorFactory = (specimenNum, dna) => {
         }
       }
       const percentIdentical = (sumIdentical / sample.dna.length) * 100;
-      console.log(`specimen #${this.specimenNum} and specimen #${sample.specimenNum} have ${precentIdentical.toFixed(2)}% DNA in common`);
+      //console.log(`specimen #${this.specimenNum} and specimen #${sample.specimenNum} have ${percentIdentical.toFixed(2)}% DNA in common`);
+      return percentIdentical;
 
     },
     // if there are 60% or more 'C' or 'G' bases in DNA strand organism has more chances to survive
