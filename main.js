@@ -41,8 +41,9 @@ const pAequorFactory = (specimenNum, dna) => {
           sumIdentical++
         }
       }
-      const precentIdentical = (sumIdentical / sample.dna.length) * 100;
+      const percentIdentical = (sumIdentical / sample.dna.length) * 100;
       console.log(`specimen #${this.specimenNum} and specimen #${sample.specimenNum} have ${precentIdentical.toFixed(2)}% DNA in common`);
+
     },
     // if there are 60% or more 'C' or 'G' bases in DNA strand organism has more chances to survive
     willLikelySurvive() {
