@@ -84,7 +84,6 @@ const findMostRelatedOrganisms = specimen => {
         highestMatch.matchPercent = specimen[i].compareDNA(specimen[j]);
 
       }
-      //console.log(`${specimen[i].specimenNum} and ${specimen[j].specimenNum}: `, specimen[i].compareDNA(specimen[j]));
     }
   }
   return highestMatch;
